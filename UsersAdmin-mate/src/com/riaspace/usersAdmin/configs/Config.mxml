@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mate:EventMap
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mate="http://mate.asfusion.com/">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.riaspace.usersAdmin.commands.CreateUserCmd;
+			import com.riaspace.usersAdmin.controllers.StartupController;
+			import com.riaspace.usersAdmin.events.UserEvent;
+			import com.riaspace.usersAdmin.models.ApplicationModel;
+			import com.riaspace.usersAdmin.models.presentation.AddUserPM;
+			import com.riaspace.usersAdmin.models.presentation.MainPM;
+			import com.riaspace.usersAdmin.models.presentation.UsersListPM;
+			import com.riaspace.usersAdmin.services.UsersService;
+			import com.riaspace.usersAdmin.views.AddUserView;
+			import com.riaspace.usersAdmin.views.MainView;
+			import com.riaspace.usersAdmin.views.UsersListView;
+			
+			import mx.events.FlexEvent;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+
+		<mate:Debugger level="{Debugger.ALL}" />
+		
+		<s:RemoteObject id="remoteObject" destination="zend" source="UsersService"
+						endpoint="http://amf.riaspace.com/messagebroker/amf" />
+
+		<mate:EventHandlers type="{FlexEvent.APPLICATION_COMPLETE}">
+			
+			<mate:ObjectBuilder id="applicationModel" generator="{ApplicationModel}" />
+
+			<mate:ObjectBuilder generator="{StartupController}">
+				<mate:Property targetKey="applicationModel" source="{ApplicationModel}" />
+			</mate:ObjectBuilder>
+			
+			<mate:RemoteObjectInvoker instance="{remoteObject}" method="findAllUsers">
+				
+				<mate:resultHandlers>
+					<mate:MethodInvoker generator="{StartupController}" 
+								   method="findAllUsers_resultHandler"
+								   arguments="{resultObject}"/>
+				</mate:resultHandlers>
+				
+				<mate:faultHandlers>
+					<mate:MethodInvoker generator="{StartupController}"
+								   method="findAllUsers_faultHandler" 
+								   arguments="{event.fault}"/>
+				</mate:faultHandlers>
+				
+			</mate:RemoteObjectInvoker>
+			
+		</mate:EventHandlers>
+		
+		<mate:Injectors target="{MainPM}">
+			<mate:PropertyInjector targetKey="applicationModel" source="{ApplicationModel}" />
+		</mate:Injectors>
+		
+		<mate:Injectors target="{MainView}">
+			<mate:PropertyInjector targetKey="model" source="{MainPM}" />
+		</mate:Injectors>
+		
+		<mate:Injectors target="{UsersListPM}">
+			<mate:PropertyInjector targetKey="applicationModel" source="{ApplicationModel}" />
+		</mate:Injectors>
+
+		<mate:Injectors target="{UsersListView}">
+			<mate:PropertyInjector targetKey="model" source="{UsersListPM}" />
+		</mate:Injectors>
+
+		<mate:Injectors id="usersService" target="{UsersService}">
+			<mate:PropertyInjector targetKey="remoteObject" source="{remoteObject}" />
+		</mate:Injectors>
+		
+		<mate:Injectors target="{AddUserPM}">
+			<mate:PropertyInjector targetKey="dispatcher" source="{scope.dispatcher}"/>
+		</mate:Injectors>
+		
+		<mate:EventHandlers type="{UserEvent.USER_CREATED}">
+			<mate:MethodInvoker generator="{MainPM}" method="userAdded" arguments="{[event]}" />
+		</mate:EventHandlers>
+		
+		<mate:Injectors target="{AddUserView}">
+			<mate:MethodInvoker generator="{AddUserPM}" method="postConstruct" />
+			<mate:PropertyInjector targetKey="model" source="{AddUserPM}" />
+		</mate:Injectors>
+
+		<mate:Injectors target="{CreateUserCmd}">
+			<mate:PropertyInjector targetKey="usersService" source="{UsersService}" />
+			<mate:PropertyInjector targetKey="applicationModel" source="{ApplicationModel}" />
+			<mate:PropertyInjector targetKey="dispatcher" source="{scope.dispatcher}"/>
+		</mate:Injectors>
+
+		<mate:EventHandlers type="{UserEvent.CREATE_USER}">
+			<mate:CommandInvoker generator="{CreateUserCmd}" cache="none" />
+		</mate:EventHandlers>
+
+	</fx:Declarations>
+	
+</mate:EventMap>

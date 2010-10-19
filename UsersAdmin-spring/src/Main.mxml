@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" 
+					   xmlns:views="com.riaspace.usersAdmin.views.*"
+					   width="330" height="520"
+					   creationComplete="init(event)"
+					   title="Users Admin (Powered by Spring ActionScript)">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.riaspace.usersAdmin.configs.Config;
+			import com.riaspace.usersAdmin.controllers.StartupController;
+			
+			import mx.events.FlexEvent;
+			
+			import org.springextensions.actionscript.context.support.MXMLApplicationContext;
+
+			private var appContext:MXMLApplicationContext;
+			
+			protected function init(event:FlexEvent):void
+			{
+				appContext = new MXMLApplicationContext();
+				appContext.addConfig(Config);
+				appContext.addEventListener(Event.COMPLETE, appContext_completeHandler);
+				appContext.load();
+			}
+
+			private function appContext_completeHandler(event:Event):void
+			{
+				var startupController:StartupController = appContext.createInstance(StartupController);
+			}
+
+		]]>
+	</fx:Script>
+	
+	<views:MainView id="mainView" left="0" top="0" bottom="0" right="0" />
+	
+</s:WindowedApplication>

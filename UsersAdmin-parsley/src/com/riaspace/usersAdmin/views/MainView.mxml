@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:views="com.riaspace.usersAdmin.views.*"
+		 width="400" height="300" 
+		 currentState="{model.currentState}">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.riaspace.usersAdmin.models.presentation.MainPM;
+			
+			[Inject]
+			[Bindable]
+			public var model:MainPM;			
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:states>
+		<s:State name="LOADING_USERS" />
+		<s:State name="USERS_LIST_STATE" />
+		<s:State name="ADD_USER_STATE" />
+	</s:states>
+	
+	<s:Button id="btnUsersList" x="175" y="10" excludeFrom="LOADING_USERS" label="Users List" click="model.btnUsersList_clickHandler()" />
+	<s:Button id="btnAddUser" x="210" y="10" excludeFrom="LOADING_USERS" label="Add User" click="model.btnAddUser_clickHandler()" />
+	
+	<mx:ProgressBar id="prgBar" label="Loading users" horizontalCenter="0" verticalCenter="0" includeIn="LOADING_USERS"  indeterminate="true"/>
+	
+	<views:UsersListView id="usersListView" left="5" top="60" right="5" bottom="5"  includeIn="USERS_LIST_STATE" />
+	
+	<views:AddUserView id="addUserView" left="5" top="60" right="5" bottom="5" includeIn="ADD_USER_STATE" />
+	
+</s:Group>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Objects
+	xmlns="http://www.springactionscript.org/mxml/config"
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.riaspace.usersAdmin.commands.CreateUserCmd;
+			import com.riaspace.usersAdmin.controllers.StartupController;
+			import com.riaspace.usersAdmin.models.ApplicationModel;
+			import com.riaspace.usersAdmin.models.presentation.AddUserPM;
+			import com.riaspace.usersAdmin.models.presentation.MainPM;
+			import com.riaspace.usersAdmin.models.presentation.UsersListPM;
+			import com.riaspace.usersAdmin.services.UsersService;
+			
+			import org.springextensions.actionscript.core.mvc.MVCControllerObjectFactoryPostProcessor;
+			import org.springextensions.actionscript.ioc.factory.config.EventHandlerMetadataProcessor;
+			import org.springextensions.actionscript.ioc.factory.config.RouteEventsMetaDataProcessor;
+			import org.springextensions.actionscript.stage.DefaultAutowiringStageProcessor;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+
+		<Object id="autowiringStageProcessor" clazz="{DefaultAutowiringStageProcessor}"/>
+		<Object id="eventhandlerProcessor" clazz="{EventHandlerMetadataProcessor}" />
+		<Object id="routeEventsProcessor" clazz="{RouteEventsMetaDataProcessor}" />
+		<Object id="mvcController" clazz="{MVCControllerObjectFactoryPostProcessor}"/>
+		
+		<Object id="startupController" clazz="{StartupController}" initMethod="initController" scope="singleton" />
+		
+		<Object id="applicationModel" clazz="{ApplicationModel}" scope="singleton" />
+
+		<Object id="mainPM" clazz="{MainPM}" scope="singleton" isLazyInit="true" />
+		
+		<Object id="addUserPM" clazz="{AddUserPM}" scope="prototype" isLazyInit="true" initMethod="postConstruct" />
+		
+		<Object id="usersListPM" clazz="{UsersListPM}" scope="singleton" isLazyInit="true" />
+		
+		<Object id="usersService" clazz="{UsersService}" constructorArguments="{[remoteObject]}" scope="singleton" />
+		<s:RemoteObject id="remoteObject" destination="zend" source="UsersService"
+						endpoint="http://amf.riaspace.com/messagebroker/amf" />
+
+		<Object id="createUserCmd" clazz="{CreateUserCmd}" />
+		
+	</fx:Declarations>
+	
+</Objects>

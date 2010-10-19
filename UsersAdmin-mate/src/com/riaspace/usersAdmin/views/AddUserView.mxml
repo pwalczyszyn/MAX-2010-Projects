@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 width="400" height="300">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.riaspace.usersAdmin.models.presentation.AddUserPM;
+			
+			// Injected
+			[Bindable]
+			public var model:AddUserPM;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<mx:Form verticalCenter="-50" horizontalCenter="0" fontSize="18">
+		<mx:FormItem label="Name:">
+			<s:TextInput text="@{model.user.name}" />
+		</mx:FormItem>
+		<mx:FormItem>
+			<s:Button label="Create User" click="model.btnCreateUser_clickHandler()" />
+		</mx:FormItem>
+	</mx:Form>
+	
+</s:Group>

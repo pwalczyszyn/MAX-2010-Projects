@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<swiz:BeanProvider
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:swiz="http://swiz.swizframework.org"
+	xmlns:s="library://ns.adobe.com/flex/spark" xmlns:controllers="com.riaspace.usersAdmin.controllers.*" xmlns:models="com.riaspace.usersAdmin.models.*" xmlns:services="com.riaspace.usersAdmin.services.*" xmlns:configs="com.riaspace.usersAdmin.configs.*">
+	<fx:Script>
+		<![CDATA[
+			import com.riaspace.usersAdmin.models.presentation.AddUserPM;
+			import com.riaspace.usersAdmin.models.presentation.MainPM;
+			import com.riaspace.usersAdmin.models.presentation.UsersListPM;
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+
+		<configs:Commands />
+		
+		<models:ApplicationModel id="applicationModel" />
+		
+		<controllers:StartupController id="startupController" />
+		
+		<swiz:ServiceHelper id="serviceHelper" />
+		<services:UsersService id="usersService" />
+		<s:RemoteObject id="remoteObject" destination="zend" source="UsersService"
+						endpoint="http://amf.riaspace.com/messagebroker/amf"
+						/>
+		
+		<swiz:Prototype id="mainPM" type="{MainPM}" singleton="true" />
+		<swiz:Prototype id="addUserPM" type="{AddUserPM}" singleton="false" />
+		<swiz:Prototype id="usersListPM" type="{UsersListPM}" singleton="true" />
+		
+	</fx:Declarations>
+</swiz:BeanProvider> 
