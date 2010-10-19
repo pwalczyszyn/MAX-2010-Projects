@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:fc="http://ns.adobe.com/flashcatalyst/2009"
+		width="117" height="29" fc:resizable="true">
+	<fx:Metadata>[HostComponent("spark.components.Button")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:Rect x="1.5" y="1.5" width="114" height="26" radiusX="5">
+		<s:stroke>
+			<s:SolidColorStroke alpha="0.3" caps="round" color="#FFFFFF" joints="miter"
+								miterLimit="4" weight="3"
+								alpha.over="0.6"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor alpha="0.5" color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Label id="labelDisplay"
+			 textAlign="center"
+			 verticalAlign="middle"
+			 maxDisplayedLines="1"
+			 horizontalCenter="0" verticalCenter="1"
+			 left="5" right="5" top="2" bottom="2">
+		
+		<s:filters>
+			<s:DropShadowFilter alpha="0.5" angle="45.0" blurX="4.0" blurY="4.0" color="#999999"
+								distance="4.0" hideObject="false" inner="false" knockout="false"
+								quality="2" strength="1"/>
+		</s:filters>
+		
+	</s:Label>
+	
+</s:Skin>

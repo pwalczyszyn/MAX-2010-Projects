@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:s="library://ns.adobe.com/flex/spark"
+				xmlns:fx="http://ns.adobe.com/mxml/2009"
+				xmlns:fc="http://ns.adobe.com/flashcatalyst/2009"
+				xmlns:graphics="assets.graphics.*"
+				xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+				width="284" height="80" autoDrawBackground="false" fc:resizable="true">
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="hovered"/>
+		<s:State name="selected"/>
+	</s:states>
+	<s:Rect x="1.5" y="1.5" width="281" height="77" radiusX="10">
+		<s:stroke>
+			<s:SolidColorStroke caps="round" color="#FFFFFF" joints="miter" miterLimit="4" weight="3"
+								alpha.normal="0.8"/>
+		</s:stroke>
+		<s:filters>
+			<s:DropShadowFilter alpha="0.5" angle="45.0" blurX="4.0" blurY="4.0" color="#999999"
+								distance="4.0" hideObject="false" inner="false" knockout="false"
+								quality="2" strength="1"/>
+		</s:filters>
+		<s:fill.normal>
+			<s:SolidColor alpha="0.3" color="#FFFFFF"/>
+		</s:fill.normal>
+	</s:Rect>
+	<graphics:avatar x="10" y="10"/>
+	<s:RichText x="90" y="15" color="#FFFFFF"  fontSize="20"
+				tabStops="S0 S50 S100 S150 S200" text="{data.name}">
+		<s:filters>
+			<s:DropShadowFilter includeIn="normal" alpha="0.5" angle="45.0" blurX="4.0" blurY="4.0"
+								color="#999999" distance="4.0" hideObject="false" inner="false"
+								knockout="false" quality="2" strength="1"/>
+		</s:filters>
+	</s:RichText>
+	<s:Rect d:userLabel="Item Highlight Rectangle" width="284" height="80"
+			alpha.hovered="0.3"
+			alpha.normal="0"
+			alpha.selected="0.5">
+		<s:fill>
+			<s:SolidColor color="0xCED7EE"/>
+		</s:fill>
+	</s:Rect>
+</s:ItemRenderer>

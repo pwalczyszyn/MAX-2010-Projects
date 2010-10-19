@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" version="3">
+  <includeClasses>
+    <classEntry path="com.riaspace.usersAdmin.skins.UsersListItemRenderer"/>
+    <classEntry path="com.riaspace.usersAdmin.skins.UsersListScrollbarTrackSkin"/>
+    <classEntry path="com.riaspace.usersAdmin.skins.UsersListScrollbarThumbSkin"/>
+    <classEntry path="com.riaspace.usersAdmin.skins.UsersListScrollbarSkin"/>
+    <classEntry path="com.riaspace.usersAdmin.skins.AddUserButtonSkin"/>
+    <classEntry path="com.riaspace.usersAdmin.skins.UsersListButtonSkin"/>
+    <classEntry path="com.riaspace.usersAdmin.skins.UsersListSkin"/>
+    <classEntry path="com.riaspace.usersAdmin.skins.TextInputSkin"/>
+    <classEntry path="com.riaspace.usersAdmin.skins.ButtonSkin"/>
+    <classEntry path="com.riaspace.usersAdmin.skins.WindowedApplicationSkin"/>
+  </includeClasses>
+  <includeResources>
+    <resourceEntry destPath="assets/fonts/Cantarell-Regular.ttf" sourcePath="assets/fonts/Cantarell-Regular.ttf"/>
+    <resourceEntry destPath="defaults.css" sourcePath="defaults.css"/>
+  </includeResources>
+  <namespaceManifests/>
+</flexLibProperties>

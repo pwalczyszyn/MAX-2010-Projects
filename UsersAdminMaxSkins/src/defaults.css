@@ -1,0 +1,47 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+global
+{
+	color: #FFFFFF;
+	focus-color: #91E3C7;
+	font-family: Cantarell-Regular;
+}
+
+@font-face
+{
+	fontFamily: "Cantarell-Regular";
+	src: url("assets/fonts/Cantarell-Regular.ttf");
+	embedAsCFF: true;
+}
+
+s|WindowedApplication
+{
+	skin-class: ClassReference("com.riaspace.usersAdmin.skins.WindowedApplicationSkin");
+}
+
+#btnUsersList
+{
+	skin-class: ClassReference("com.riaspace.usersAdmin.skins.UsersListButtonSkin");
+}
+
+#btnAddUser
+{
+	skin-class: ClassReference("com.riaspace.usersAdmin.skins.AddUserButtonSkin");
+}
+
+#lstUsers
+{
+	skin-class: ClassReference("com.riaspace.usersAdmin.skins.UsersListSkin");
+}
+
+s|TextInput
+{
+	skin-class: ClassReference("com.riaspace.usersAdmin.skins.TextInputSkin");
+}
+
+s|Button
+{
+	skin-class: ClassReference("com.riaspace.usersAdmin.skins.ButtonSkin"); 
+}

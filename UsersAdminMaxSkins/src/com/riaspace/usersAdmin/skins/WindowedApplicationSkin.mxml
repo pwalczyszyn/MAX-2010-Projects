@@ -1,0 +1,63 @@
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009"
+			 xmlns:s="library://ns.adobe.com/flex/spark"
+			 xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+			 xmlns:mx="library://ns.adobe.com/flex/mx"
+			 width="330" height="520"
+			 creationComplete="skin_creationCompleteHandler(event)">
+	
+	<fx:Metadata>[HostComponent("spark.components.WindowedApplication")]</fx:Metadata>
+	
+	<fx:Declarations>
+		<s:DropShadowFilter id="dropShadow" alpha="0.5" angle="45" distance="10" strength="0.65" 
+							inner="false" knockout="false" blurX="6" blurY="6" color="0x000000" />
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import flash.desktop.NativeApplication;
+			
+			import mx.events.FlexEvent;
+			protected function contentGroup_mouseDownHandler(event:MouseEvent):void
+			{
+				if (event.target is Group)
+					NativeApplication.nativeApplication.activeWindow.startMove();
+			}
+			
+			protected function btnClose_clickHandler(event:MouseEvent):void
+			{
+				NativeApplication.nativeApplication.exit();
+			}
+
+			protected function skin_creationCompleteHandler(event:FlexEvent):void
+			{
+				hostComponent.addEventListener(FlexEvent.APPLICATION_COMPLETE, onApplicationComplete);
+			}
+
+			private function onApplicationComplete(event:FlexEvent):void
+			{
+				hostComponent.nativeWindow.x = (Capabilities.screenResolutionX - hostComponent.nativeWindow.width) / 2;
+				hostComponent.nativeWindow.y = (Capabilities.screenResolutionY - hostComponent.nativeWindow.height) / 2;
+			}
+
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="disabled" stateGroups="disabledGroup" />
+		<s:State name="normalAndInactive" stateGroups="inactiveGroup" />
+		<s:State name="disabledAndInactive" stateGroups="disabledGroup, inactiveGroup" />
+	</s:states>
+	
+	<s:BitmapImage source="@Embed(source='/assets/background.png')" x="0" y="0" filters="{[dropShadow]}" />
+	
+	<mx:Image x="10" y="10" source="@Embed(source='/assets/logo.png')" />
+	
+	<s:Group id="contentGroup" width="100%" height="100%" mouseDown="contentGroup_mouseDownHandler(event)" />
+	
+	<mx:Image id="btnClose" top="8" right="18" source="@Embed(source='/assets/close-button.png')" buttonMode="true" useHandCursor="true"
+			  mouseChildren="false" click="btnClose_clickHandler(event)" />
+	
+	<s:Label right="15" bottom="16" fontSize="12" text="{hostComponent.title}" />
+	
+</s:SparkSkin>

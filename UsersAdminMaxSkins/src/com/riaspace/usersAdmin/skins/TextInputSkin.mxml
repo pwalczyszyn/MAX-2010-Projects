@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:fc="http://ns.adobe.com/flashcatalyst/2009"
+		width="150" height="30" fc:resizable="true">
+	<fx:Metadata>[HostComponent("spark.components.TextInput")]</fx:Metadata>
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:Rect x="1" y="1" width="148" height="28" radiusX="5">
+		<s:fill>
+			<s:SolidColor alpha="0.2" color="#FFFFFF"/>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#FFFFFF" joints="miter" miterLimit="4"
+								weight="2"/>
+		</s:stroke>
+	</s:Rect>
+	<s:RichEditableText id="textDisplay" verticalCenter="0" left="5" right="5" heightInLines="1"
+						fontSize="18" tabStops.normal="S0 S50 S100">
+		<s:filters>
+			<s:DropShadowFilter includeIn="normal" alpha="0.5" angle="45.0" blurX="4.0" blurY="4.0"
+								color="#999999" distance="4.0" hideObject="false" inner="false"
+								knockout="false" quality="2" strength="1"/>
+		</s:filters>
+	</s:RichEditableText>
+</s:Skin>

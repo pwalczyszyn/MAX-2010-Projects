@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Graphic xmlns:fc="http://ns.adobe.com/flashcatalyst/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns="http://ns.adobe.com/fxg/2008" version="2.0">
+	<Path alpha="1" blendMode="normal" winding="evenOdd" x="0.508" y="0.508" data="M 0.492 0.492 L 59.492 0.492 L 59.492 59.492 L 0.492 59.492 L 0.492 0.492 Z">
+		<fill>
+			<SolidColor color="#efefef"/>
+		</fill>
+		<stroke>
+			<SolidColorStroke caps="none" color="#808080" weight="1"/>
+		</stroke>
+	</Path>
+	<Path alpha="1" blendMode="normal" winding="evenOdd" x="2" y="2" data="M 0 0 L 58 0 L 58 58 L 0 58 L 0 0 Z">
+		<fill>
+			<LinearGradient rotation="90" scaleX="58" x="29" y="0.966">
+				<GradientEntry alpha="1" color="#ededed" ratio="0.01"/>
+				<GradientEntry alpha="1" color="#dedede" ratio="0.99"/>
+			</LinearGradient>
+		</fill>
+	</Path>
+	<Path alpha="1" blendMode="normal" winding="nonZero" x="1.5" y="4.5" data="M 28.5 0.5 C 28.5 0.5 32.5 0.5 33.5 1.5 C 34.5 2.5 35.5 4.5 36.5 5.5 C 36.5 5.5 38.5 7.5 38.5 8.5 C 38.5 9.5 38.5 12.5 38.5 13.5 C 38.5 15.5 38.5 17.5 38.5 18.5 C 37.5 19.5 37.5 22.5 37.5 22.5 C 36.5 22.5 36.5 22.5 36.5 22.5 C 36.5 22.5 36.5 24.5 36.5 24.5 C 36.5 25.5 35.5 27.5 35.5 28.5 C 34.5 29.5 34.5 30.5 35.5 30.5 C 36.5 31.5 37.5 33.5 38.5 33.5 C 39.5 33.5 42.5 33.5 44.5 34.5 C 46.5 35.5 45.5 35.5 46.5 35.5 C 51.5 38.5 55.5 51.5 56.5 52.5 C 56.5 53.5 57.5 55.5 57.5 55.5 L 0.5 55.5 C 0.5 55.5 2.5 46.5 3.5 44.5 C 4.5 42.5 9.5 37.5 10.5 36.5 C 11.5 35.5 12.5 35.5 14.5 35.5 C 16.5 34.5 18.5 33.5 19.5 32.5 C 20.5 31.5 20.5 31.5 21.5 30.5 C 21.5 30.5 21.5 30.5 21.5 30.5 L 21.5 28.5 C 21.5 28.5 21.5 28.5 21.5 27.5 C 20.5 26.5 19.5 25.5 19.5 24.5 C 19.5 22.5 19.5 23.5 18.5 21.5 C 18.5 20.5 18.5 19.5 18.5 19.5 C 18.5 18.5 18.5 17.5 18.5 16.5 C 17.5 15.5 17.5 15.5 17.5 15.5 C 17.5 15.5 16.5 11.5 17.5 8.5 C 18.5 5.5 19.5 5.5 20.5 4.5 C 21.5 3.5 22.5 0.5 28.5 0.5 C 28.5 0.5 28.5 0.5 28.5 0.5 Z">
+		<fill>
+			<LinearGradient rotation="90" scaleX="52" x="28.5" y="2.5">
+				<GradientEntry alpha="1" color="#737373" ratio="0.01"/>
+				<GradientEntry alpha="1" color="#4c4c4c" ratio="0.99"/>
+			</LinearGradient>
+		</fill>
+		<stroke>
+			<SolidColorStroke caps="none" color="#676767" weight="1"/>
+		</stroke>
+	</Path>
+</Graphic>
