@@ -15,14 +15,14 @@
 
 	<!-- A universally unique application identifier. Must be unique across all AIR applications.
 	     Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-	<id>UsersAdmin</id>
+	<id>com.riaspace.UsersAdminSpring</id>
 
 	<!-- Used as the filename for the application. Required. -->
-	<filename>UsersAdmin</filename>
+	<filename>UsersAdminSpring</filename>
 
 	<!-- The name that is displayed in the AIR application installer. 
 	     May have multiple values for each language. See samples or xsd schema file. Optional. -->
-	<name>Users Admin</name>
+	<name>Users Admin Spring</name>
 
 	<!-- An application version designator (such as "v1", "2.5", or "Alpha 1"). Required. -->
 	<version>v1</version>
