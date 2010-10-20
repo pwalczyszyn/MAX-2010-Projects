@@ -22,18 +22,5 @@ package com.riaspace.usersAdmin.models.presentation
 		{
 			dispatcher.dispatchEvent(new UserEvent(UserEvent.CREATE_USER, user));
 		}
-		
-//		private function create_resultHandler(event:ResultEvent):void
-//		{
-//			user.id = event.result as Number;
-//			applicationModel.users.addItem(user);
-//			
-//			dispatcher.dispatchEvent(new UserEvent(UserEvent.USER_CREATED, user));
-//		}
-//		
-//		private function create_faultHandler(event:FaultEvent):void
-//		{
-//			Alert.show(event.message.toString());
-//		}
 	}
 }
