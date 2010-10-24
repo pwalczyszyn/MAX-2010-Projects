@@ -1,10 +1,10 @@
 package com.riaspace.usersAdmin.commands
 {
 	import com.riaspace.usersAdmin.events.UserEvent;
-	import com.riaspace.usersAdmin.models.ApplicationModel;
 	import com.riaspace.usersAdmin.models.domain.User;
 	import com.riaspace.usersAdmin.services.UsersService;
 	
+	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
 	import mx.rpc.AsyncToken;
 	import mx.rpc.Fault;
@@ -18,8 +18,8 @@ package com.riaspace.usersAdmin.commands
 		[Inject]
 		public var usersService:UsersService;
 
-		[Inject]
-		public var applicationModel:ApplicationModel;
+		[Subscribe(objectId="allUsers")]
+		public var users:ArrayCollection;
 
 		private var user:User;
 		
@@ -32,7 +32,7 @@ package com.riaspace.usersAdmin.commands
 		public function result(userId:Number):void
 		{
 			user.id = userId;
-			applicationModel.users.addItem(user);
+			this.users.addItem(user);
 			
 			dispatcher(new UserEvent(UserEvent.USER_CREATED, user));
 		}
