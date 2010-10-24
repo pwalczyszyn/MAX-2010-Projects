@@ -4,7 +4,7 @@
 					   xmlns:mx="library://ns.adobe.com/flex/mx" 
 					   xmlns:views="com.riaspace.usersAdmin.views.*"
 					   width="330" height="520"
-					   creationComplete="init(event)"
+					   creationComplete="windowedApplication_creationCompleteHandler(event)"
 					   title="Users Admin (Powered by Spring ActionScript)">
 	
 	<fx:Script>
@@ -16,9 +16,9 @@
 			
 			import org.springextensions.actionscript.context.support.MXMLApplicationContext;
 
-			private var appContext:MXMLApplicationContext;
+			protected var appContext:MXMLApplicationContext;
 			
-			protected function init(event:FlexEvent):void
+			protected function windowedApplication_creationCompleteHandler(event:FlexEvent):void
 			{
 				appContext = new MXMLApplicationContext();
 				appContext.addConfig(Config);
@@ -26,7 +26,7 @@
 				appContext.load();
 			}
 
-			private function appContext_completeHandler(event:Event):void
+			protected function appContext_completeHandler(event:Event):void
 			{
 				var startupController:StartupController = appContext.createInstance(StartupController);
 			}
