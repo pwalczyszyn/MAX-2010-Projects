@@ -6,12 +6,13 @@ package com.riaspace.usersAdmin.events
 	
 	public class UserEvent extends Event
 	{
-		
 		public static const USER_CREATED:String = "USER_CREATED";
+		
+		public static const CREATE_USER:String = "CREATE_USER";
 		
 		public var user:User;
 		
-		public function UserEvent(type:String, user:User, bubbles:Boolean=false, cancelable:Boolean=false)
+		public function UserEvent(type:String, user:User, bubbles:Boolean=true, cancelable:Boolean=false)
 		{
 			this.user = user;
 			super(type, bubbles, cancelable);
@@ -21,6 +22,5 @@ package com.riaspace.usersAdmin.events
 		{
 			return new UserEvent(type, user, bubbles, cancelable);
 		}
-		
 	}
 }

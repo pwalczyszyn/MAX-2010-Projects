@@ -4,7 +4,7 @@ package com.riaspace.usersAdmin.models.presentation {
 	
 	import flash.events.EventDispatcher;
 	
-	[RouteEvents(events="CREATE_USER")]
+//	[RouteEvents(events="CREATE_USER")]
 	[RouteMVCEvents(events="CREATE_USER")]
 	[Event(name="CREATE_USER", type="com.riaspace.usersAdmin.events.UserEvent")]
 	public class AddUserPM extends EventDispatcher {

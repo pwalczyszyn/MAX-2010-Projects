@@ -5,6 +5,7 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.riaspace.usersAdmin.commands.CreateUserCmd;
 			import com.riaspace.usersAdmin.models.presentation.AddUserPM;
 			import com.riaspace.usersAdmin.models.presentation.MainPM;
 			import com.riaspace.usersAdmin.models.presentation.UsersListPM;
@@ -32,6 +33,8 @@
 		
 		<parsley:Object id="usersListPM" type="{UsersListPM}" lazy="true" />
 		<parsley:View type="{UsersListView}" />
+		
+		<parsley:DynamicCommand type="{CreateUserCmd}" selector="CREATE_USER" />
 		
 	</fx:Declarations>
 	
