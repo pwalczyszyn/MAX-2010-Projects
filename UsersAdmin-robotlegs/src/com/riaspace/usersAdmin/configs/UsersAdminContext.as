@@ -39,7 +39,7 @@ package com.riaspace.usersAdmin.configs
 			injector.mapSingleton(MainPM);
 			
 			viewMap.mapType(AddUserView);
-			injector.mapClass(AddUserPM, AddUserPM);
+			injector.mapSingleton(AddUserPM);
 			
 			viewMap.mapType(UsersListView);
 			injector.mapSingleton(UsersListPM);

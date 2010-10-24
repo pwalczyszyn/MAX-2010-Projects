@@ -34,7 +34,7 @@ package com.riaspace.usersAdmin.commands
 			this.event.user.id = event.result as Number;
 			applicationModel.users.addItem(this.event.user);
 			
-			eventDispatcher.dispatchEvent(new UserEvent(UserEvent.USER_CREATED, this.event.user));
+			dispatch(new UserEvent(UserEvent.USER_CREATED, this.event.user));
 		}
 		
 		private function create_faultHandler(event:FaultEvent):void

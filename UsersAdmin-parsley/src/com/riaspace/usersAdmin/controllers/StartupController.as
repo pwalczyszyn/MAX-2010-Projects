@@ -12,9 +12,6 @@ package com.riaspace.usersAdmin.controllers
 	
 	public class StartupController
 	{
-		[MessageDispatcher]
-		public var dispatcher:Function;
-
 		[Inject]
 		public var usersService:UsersService;
 
