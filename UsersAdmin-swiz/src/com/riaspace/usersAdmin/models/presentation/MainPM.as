@@ -23,7 +23,7 @@ package com.riaspace.usersAdmin.models.presentation
 			currentState = "USERS_LIST_STATE";
 		}
 		
-		[Mediate(event="UserEvent.USER_CREATED", properties="user")]
+		[EventHandler(event="UserEvent.USER_CREATED", properties="user")]
 		public function userAdded(user:User):void
 		{
 			trace("Added user: ", user.name);
