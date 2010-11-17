@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:MobileApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					 xmlns:s="library://ns.adobe.com/flex/spark"
+					 creationComplete="mobileApplication_creationCompleteHandler(event)" xmlns:controllers="com.riaspace.usersAdmin.mobile.controllers.*">
+	<fx:Script>
+		<![CDATA[
+			import com.riaspace.usersAdmin.mobile.configs.RemoteServiceConfig;
+			import com.riaspace.usersAdmin.mobile.events.ChangeViewEvent;
+			
+			import mx.events.FlexEvent;
+
+			protected function mobileApplication_creationCompleteHandler(event:FlexEvent):void
+			{
+				eventDispatcher.addEventListener(ChangeViewEvent.PUSH_VIEW, switchView_eventHandler);
+				eventDispatcher.addEventListener(ChangeViewEvent.POP_VIEW, switchView_eventHandler);
+				
+				remoteService.config = RemoteServiceConfig;
+				
+				startupController.postConstruct();
+			}
+			
+			protected function switchView_eventHandler(event:ChangeViewEvent):void
+			{
+				switch (event.type)
+				{
+					case ChangeViewEvent.PUSH_VIEW:
+						navigator.pushView(event.viewClass, event.data, event.transition);
+						break;
+					case ChangeViewEvent.POP_VIEW:
+						navigator.popView(event.transition);
+						break;
+				}
+			}
+
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<controllers:StartupController id="startupController" />
+	</fx:Declarations>
+	
+</s:MobileApplication>
