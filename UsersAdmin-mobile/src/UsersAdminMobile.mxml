@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:MobileApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<s:MobileApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
 					 xmlns:s="library://ns.adobe.com/flex/spark"
-					 creationComplete="mobileApplication_creationCompleteHandler(event)" xmlns:controllers="com.riaspace.usersAdmin.mobile.controllers.*">
+					 xmlns:controllers="com.riaspace.usersAdmin.mobile.controllers.*"
+					 firstView="com.riaspace.usersAdmin.mobile.views.UsersListView"
+					 preinitialize="mobileApplication_preinitializeHandler(event)">
+	
+	<fx:Style source="/UsersAdminMobile.css"/>
+	
 	<fx:Script>
 		<![CDATA[
 			import com.riaspace.usersAdmin.mobile.configs.RemoteServiceConfig;
@@ -9,18 +14,20 @@
 			
 			import mx.events.FlexEvent;
 
-			protected function mobileApplication_creationCompleteHandler(event:FlexEvent):void
+			protected function mobileApplication_preinitializeHandler(event:FlexEvent):void
 			{
-				eventDispatcher.addEventListener(ChangeViewEvent.PUSH_VIEW, switchView_eventHandler);
-				eventDispatcher.addEventListener(ChangeViewEvent.POP_VIEW, switchView_eventHandler);
+				// Registering global ChangeViewEvent.PUSH_VIEW event listener
+				$.listen(ChangeViewEvent.PUSH_VIEW, switchView_eventHandler);
+				// Registering global ChangeViewEvent.POP_VIEW event listener
+				$.listen(ChangeViewEvent.POP_VIEW, switchView_eventHandler);
 				
-				remoteService.config = RemoteServiceConfig;
-				
-				startupController.postConstruct();
+				// Configuring remote services
+				$.service.configure(RemoteServiceConfig);
 			}
 			
 			protected function switchView_eventHandler(event:ChangeViewEvent):void
 			{
+				// Based on an event type navigator will either push or pop the view 
 				switch (event.type)
 				{
 					case ChangeViewEvent.PUSH_VIEW:
@@ -34,9 +41,5 @@
 
 		]]>
 	</fx:Script>
-	
-	<fx:Declarations>
-		<controllers:StartupController id="startupController" />
-	</fx:Declarations>
 	
 </s:MobileApplication>

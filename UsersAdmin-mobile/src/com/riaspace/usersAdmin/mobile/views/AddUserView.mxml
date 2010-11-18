@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="Add User" 
-		xmlns:presentation="com.riaspace.usersAdmin.mobile.models.presentation.*">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:presentation="com.riaspace.usersAdmin.mobile.models.presentation.*"
+		title="Add User" currentState="{model.viewState}"
+		backKeyPressed="model.backKey_pressedHandler()">
 
+	<s:actionContent>
+		<s:Button label="Cancel" click="model.btnCancel_clickHandler()" />
+	</s:actionContent>
+	
 	<fx:Declarations>
-		<presentation:AddUserPM id="model" />
+		<presentation:AddUserPM id="model"/>
 	</fx:Declarations>
 	
-	<s:Form verticalCenter="0" horizontalCenter="0">
-		<s:FormItem label="Name:">
-			<s:TextInput id="txtName" text="@{model.user.name}" width="280" />
-		</s:FormItem>
-		<s:FormItem>
-			<s:Button id="btnCreate" label="Create" click="model.btnCreate_clickHandler()" />
-		</s:FormItem>
-	</s:Form>
+	<s:states>
+		<s:State name="FORM_STATE"/>
+		<s:State name="PROGRESS_STATE"/>
+	</s:states>
+	
+	<s:HGroup includeIn="FORM_STATE" verticalCenter="0" horizontalCenter="0" verticalAlign="middle">
+		<s:Label text="Name:" />
+		<s:TextInput id="txtName" width="280" text="@{model.user.name}"/>
+	</s:HGroup>
+		
+	<s:Label text="Creating user..." includeIn="PROGRESS_STATE" verticalCenter="0" horizontalCenter="0"/>
 	
 </s:View>

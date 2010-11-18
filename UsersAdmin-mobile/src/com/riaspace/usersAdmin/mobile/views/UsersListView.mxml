@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="Users List" xmlns:presentation="com.riaspace.usersAdmin.mobile.models.presentation.*">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:presentation="com.riaspace.usersAdmin.mobile.models.presentation.*"
+		title="Users List" currentState="{model.viewState}" 
+		creationComplete="model.postConstruct()">
 
 	<s:actionContent>
-		<s:Button id="btnAddUser" label="Add User" click="model.btnAddUser_clickHandler()" />
-		<s:Button id="btnRefresh" label="Refresh" click="model.btnRefresh_clickHandler()" />
+		<s:Button id="btnAddUser" click="model.btnAddUser_clickHandler()"
+				  includeIn="LIST_STATE" icon="@Embed(source='/assets/add_user.png')"/>
+		<s:Button id="btnRefresh" click="model.btnRefresh_clickHandler()"
+				  includeIn="LIST_STATE" icon="@Embed(source='/assets/reload.png')"/>
 	</s:actionContent>
 	
 	<fx:Declarations>
 		<presentation:UsersListPM id="model" />
 	</fx:Declarations>
 	
-	<s:List id="lstUsers" dataProvider="{model.users}" top="10" right="10" bottom="10" left="10">
+	<s:states>
+		<s:State name="LIST_STATE"/>
+		<s:State name="PROGRESS_STATE"/>
+	</s:states>
+
+	<s:Label text="Loading users..." includeIn="PROGRESS_STATE" verticalCenter="0" horizontalCenter="0"/>
+	
+	<s:List id="lstUsers" includeIn="LIST_STATE" left="10" right="10" top="10" bottom="10" dataProvider="{model.users}">
 		<s:itemRenderer>
 			<fx:Component>
-				<s:MobileIconItemRenderer labelField="name" />
+				<s:MobileIconItemRenderer labelField="name"/>
 			</fx:Component>
 		</s:itemRenderer>
 	</s:List>
