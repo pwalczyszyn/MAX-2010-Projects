@@ -1,3 +1,4 @@
 bin-debug/
 bin/
 /.metadata
+.DS_Store
