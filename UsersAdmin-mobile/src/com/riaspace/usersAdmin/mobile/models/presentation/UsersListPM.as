@@ -13,7 +13,7 @@ package com.riaspace.usersAdmin.mobile.models.presentation
 		public var viewState:String;
 		
 		[Bindable]
-		public var users:ArrayCollection = $.inout("users");
+		public var users:ArrayCollection = $.inject("users");
 		
 		public function postConstruct():void
 		{
@@ -50,7 +50,7 @@ package com.riaspace.usersAdmin.mobile.models.presentation
 				users.removeAll();
 			else
 				// Setting users and also outjecting it to the application context
-				users = $.inout("users", new ArrayCollection());
+				users = $.inject("users", new ArrayCollection());
 			
 			// Adding all received users from remote service method call
 			users.addAll(new ArrayCollection(event.result as Array));

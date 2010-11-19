@@ -16,13 +16,13 @@
 
 			protected function mobileApplication_preinitializeHandler(event:FlexEvent):void
 			{
+				// Configuring remote services
+				$.services.configure(RemoteServiceConfig);
+				
 				// Registering global ChangeViewEvent.PUSH_VIEW event listener
 				$.listen(ChangeViewEvent.PUSH_VIEW, switchView_eventHandler);
 				// Registering global ChangeViewEvent.POP_VIEW event listener
 				$.listen(ChangeViewEvent.POP_VIEW, switchView_eventHandler);
-				
-				// Configuring remote services
-				$.service.configure(RemoteServiceConfig);
 			}
 			
 			protected function switchView_eventHandler(event:ChangeViewEvent):void
